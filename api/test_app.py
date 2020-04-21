@@ -6,8 +6,9 @@ class BasicTestCase(unittest.TestCase):
     def test_api(self):
         tester = app.test_client(self)
         response = tester.get('/api', content_type='application/json')
-        self.assertEqual(response.status_code, 200)
-        self.assertEqual(len(json.loads(response.data)), 10)
+        responseJSON = json.loads(response.data)
+        self.assertEqual(responseJSON['status'], 200)
+        self.assertEqual(len(responseJSON['results']), 10)
 
     def test_method(self):
         self.assertEqual(getCount([{"joke": "good Good better girl clean machine"},
