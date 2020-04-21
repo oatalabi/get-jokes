@@ -1,39 +1,35 @@
 
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { JokesService, Joke } from '../jokes.service';
+import { DataSource } from '@angular/cdk/table';
 
 @Component({
   selector: 'app-joke-display',
   templateUrl: './joke-display.component.html',
   styleUrls: ['./joke-display.component.css'],
 })
-export class JokeDisplayComponent implements OnInit {
+export class JokeDisplayComponent {
   dataSource = [];
   displayedColumns: string[] = ['rank', 'term', 'count'];
   showList = false;
   isDisabled = false;
-  showEmpty = false;
+  showError = false;
 
   constructor(private jokesService: JokesService) {}
 
   public getJokes(): void {
-    this.showList = true;
     this.isDisabled = true;
     this.jokesService.getJokes().subscribe((data: Joke) => {
-      if (data.status === 200) {
-        this.isDisabled = false;
+      this.isDisabled = false;
+      if (Object.entries(data).length === 0) {
+        this.showError = true;
+      }
+      else {
         this.dataSource = data.results;
-        if (this.dataSource.length === 0){
-          this.showEmpty = true;
-        }
+        this.showList = true;
       }
-      if (data.status === 500) {
-        this.showList = false;
-        this.showEmpty = true;
-        this.isDisabled = false;
-      }
-    });
+    },
+    (error: any) =>
+      console.log('nothing happens here, handled already'));
   }
-
-  ngOnInit(): void {}
 }

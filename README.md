@@ -3,11 +3,11 @@
 Download or `git clone` this repository to run locally.
 
 ## Backend server
-Ensure Python 3.7 is installed.
+Ensure Python 3.7 or a newer version is installed.
 
 On a new terminal/command line tab or window change to the `api` directory. Use `cd api`.
 
-Install all dependencies required to run the server by running `pip install -r requirements.txt`.
+Install all dependencies required to run the server by running `python3 -m pip install -r requirements.txt`.
 
 Run `python app_api.py` to start the server. It will be available at `http://localhost:8000/`.
 

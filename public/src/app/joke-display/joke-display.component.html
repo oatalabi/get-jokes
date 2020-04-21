@@ -2,13 +2,17 @@
   <button mat-raised-button color="primary" (click)="getJokes()" [disabled]="isDisabled">Get Me Counts</button>
 </div>
 
-<div *ngIf="showEmpty" style="padding: 13px;">
+<div *ngIf="dataSource.length === 0 && showList" class="show-empty">
   <mat-card>No joke available....Please try again</mat-card>
 </div>
 
-<div *ngIf="showList || showEmpty" style="padding: 13px;">
-  <mat-spinner *ngIf="dataSource.length === 0 && !showEmpty"></mat-spinner>
-  <table *ngIf="dataSource.length > 0" mat-table [dataSource]="dataSource" class="mat-elevation-z8 center">
+<div *ngIf="showError && !isDisabled" class="show-empty">
+  <mat-card>Error occured....Please try again</mat-card>
+</div>
+
+<div *ngIf="showList" class="show-results">
+  <mat-spinner *ngIf="isDisabled"></mat-spinner>
+  <table *ngIf="dataSource.length > 0 && !isDisabled" mat-table [dataSource]="dataSource" class="mat-elevation-z8 center">
 
     <!-- Rank Column -->
     <ng-container matColumnDef="rank">

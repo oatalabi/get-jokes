@@ -39,3 +39,11 @@ a {
   text-align: center;
   margin-top: 10%;
 }
+
+.show-empty {
+  padding: 13px;
+}
+
+.show-results{
+  padding: 13px;
+}

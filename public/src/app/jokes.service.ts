@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { map, catchError } from 'rxjs/operators';
+import { of } from 'rxjs';
 
 export interface Joke {
-  status: any;
-  results: any;
+  status: number;
+  results: any[];
 }
 
 @Injectable({
@@ -15,7 +17,14 @@ export class JokesService {
 
   constructor(private httpClient: HttpClient) {}
 
-  public getJokes(){
-    return this.httpClient.get<Joke>(this.API_SERVER);
+  // Return "response" from the API. If an error happens,
+  // return an empty object.
+  public getJokes() {
+    return this.httpClient.get<Joke>(this.API_SERVER).pipe(
+      map((res) => {
+        return res;
+      }),
+      catchError((err) => of({}))
+    );
   }
 }
