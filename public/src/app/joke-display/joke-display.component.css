@@ -1,0 +1,31 @@
+table {
+  width: 70%;
+}
+
+.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.gray {
+  background-color: #f2f2f2;
+}
+
+.mat-header-row {
+  background-color: #535353;
+}
+
+.mat-header-cell {
+  color: white;
+  font-size: 14px;
+}
+
+button,
+a {
+  margin-right: 8px;
+}
+
+.getJokeButton {
+  text-align: center;
+  margin-top: 10%;
+}
