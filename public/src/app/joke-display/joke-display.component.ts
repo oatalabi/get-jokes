@@ -1,6 +1,6 @@
 
 import { Component } from '@angular/core';
-import { JokesService, Joke } from '../jokes.service';
+import { JokesService, JokeServerResponse } from '../jokes.service';
 import { DataSource } from '@angular/cdk/table';
 
 @Component({
@@ -19,17 +19,18 @@ export class JokeDisplayComponent {
 
   public getJokes(): void {
     this.isDisabled = true;
-    this.jokesService.getJokes().subscribe((data: Joke) => {
-      this.isDisabled = false;
-      if (Object.entries(data).length === 0) {
-        this.showError = true;
-      }
-      else {
-        this.dataSource = data.results;
-        this.showList = true;
-      }
-    },
-    (error: any) =>
-      console.log('nothing happens here, handled already'));
+    this.jokesService.getJokes().subscribe(
+      (data: JokeServerResponse) => {
+        this.isDisabled = false;
+        if (Object.entries(data).length === 0) {
+          this.showError = true;
+          this.showList = false;
+        } else {
+          this.dataSource = data.results;
+          this.showList = true;
+        }
+      },
+      (error: any) => console.log('nothing happens here, handled already')
+    );
   }
 }

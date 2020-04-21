@@ -11,7 +11,7 @@
 </div>
 
 <div *ngIf="showList" class="show-results">
-  <mat-spinner *ngIf="isDisabled"></mat-spinner>
+  <mat-spinner *ngIf="isDisabled && dataSource.length > 0"></mat-spinner>
   <table *ngIf="dataSource.length > 0 && !isDisabled" mat-table [dataSource]="dataSource" class="mat-elevation-z8 center">
 
     <!-- Rank Column -->

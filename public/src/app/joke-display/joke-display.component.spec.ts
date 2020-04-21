@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClientModule } from '@angular/common/http';
 import { JokeDisplayComponent } from './joke-display.component';
-import { JokesService, Joke } from '../jokes.service';
+import { JokesService } from '../jokes.service';
 
 describe('JokeDisplayComponent', () => {
 

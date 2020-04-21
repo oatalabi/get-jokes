@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { map, catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
 
-export interface Joke {
+export interface JokeServerResponse {
   status: number;
   results: any[];
 }
@@ -20,7 +20,7 @@ export class JokesService {
   // Return "response" from the API. If an error happens,
   // return an empty object.
   public getJokes() {
-    return this.httpClient.get<Joke>(this.API_SERVER).pipe(
+    return this.httpClient.get<JokeServerResponse>(this.API_SERVER).pipe(
       map((res) => {
         return res;
       }),

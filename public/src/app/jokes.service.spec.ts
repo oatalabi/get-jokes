@@ -5,7 +5,7 @@ import {
   HttpTestingController,
 } from '@angular/common/http/testing';
 
-import { JokesService, Joke } from './jokes.service';
+import { JokesService, JokeServerResponse } from './jokes.service';
 
 describe('JokesService', () => {
   beforeEach(() => {
@@ -34,7 +34,7 @@ describe('JokesService', () => {
       };
 
       // tslint:disable-next-line:no-shadowed-variable
-      jokesService.getJokes().subscribe((data: Joke) => {
+      jokesService.getJokes().subscribe((data: JokeServerResponse) => {
         expect(data.status).toBe(200);
         expect(data.results.length).toBe(10);
       });
@@ -60,7 +60,7 @@ describe('JokesService', () => {
       };
 
       // tslint:disable-next-line:no-shadowed-variable
-      jokesService.getJokes().subscribe((data: Joke) => {
+      jokesService.getJokes().subscribe((data: JokeServerResponse) => {
         expect(data.status).toBe(200);
         expect(data.results.length).toBe(0);
       });

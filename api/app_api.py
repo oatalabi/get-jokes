@@ -50,17 +50,17 @@ def getJokes():
     else:
         allJokes = requests.get(url, headers={"Accept": "application/json"})
         data = allJokes.json()
-        cache.set(pageNumber, data) #add key and value to cache
-        cachedResult = data
+    
+        if data['results']:
+            jokes = data['results']
+            sortedFrequency = getCount(jokes, top=10)
+            cachedResult = sortedFrequency
+            cache.set(pageNumber, sortedFrequency) #add key and value to cache
+        else:
+            jokes = []
+            cachedResult = []
 
-    if cachedResult['results']:
-        jokes = cachedResult['results']
-        sortedFrequency = getCount(jokes, top=10)
-    else:
-        jokes = []
-        sortedFrequency = []
-
-    response['results'] = sortedFrequency
+    response['results'] = cachedResult
     response['status'] = 200
     return jsonify(response), 200
 

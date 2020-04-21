@@ -5,13 +5,16 @@ Download or `git clone` this repository to run locally.
 ## Backend server
 Ensure Python 3.7 or a newer version is installed.
 
+Use a virtual environment to code using `python3 -m venv .env3`
+and `source .env3/bin/activate` to activate the environment
+
 On a new terminal/command line tab or window change to the `api` directory. Use `cd api`.
 
 Install all dependencies required to run the server by running `python3 -m pip install -r requirements.txt`.
 
-Run `python app_api.py` to start the server. It will be available at `http://localhost:8000/`.
+Run `python3 app_api.py` to start the server. It will be available at `http://localhost:8000/`.
 
-Run `python test_app.py` to execute the unit tests.
+Run `python3 test_app.py` to execute the unit tests.
 
 ## Frontend
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.1.
