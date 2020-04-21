@@ -50,4 +50,29 @@ describe('JokesService', () => {
 
     }
   ));
+
+  it('should return empty list when there is no joke', inject(
+    [HttpTestingController, JokesService],
+    (httpMock: HttpTestingController, jokesService: JokesService) => {
+      const mockJokes = {
+        results: [],
+        status: 200,
+      };
+
+      // tslint:disable-next-line:no-shadowed-variable
+      jokesService.getJokes().subscribe((data: Joke) => {
+        expect(data.status).toBe(200);
+        expect(data.results.length).toBe(0);
+      });
+
+      const mockReq = httpMock.expectOne(jokesService.API_SERVER);
+
+      // expect(mockReq.cancelled).toBeFalsy();
+      expect(mockReq.request.responseType).toEqual('json');
+
+      mockReq.flush(mockJokes);
+
+      httpMock.verify();
+    }
+  ));
 });

@@ -10,6 +10,13 @@ class BasicTestCase(unittest.TestCase):
         self.assertEqual(responseJSON['status'], 200)
         self.assertEqual(len(responseJSON['results']), 10)
 
+    def test_error(self):
+        tester = app.test_client(self)
+        response = tester.get('/api-error', content_type='application/json')
+        responseJSON = json.loads(response.data)
+        self.assertEqual(responseJSON['status'], 500)
+        self.assertEqual(responseJSON['message'], 'An unexpected error has occurred.')
+
     def test_method(self):
         self.assertEqual(getCount([{"joke": "good Good better girl clean machine"},
                                     {"joke": "better Synaptitude good! clean machine brain"},

@@ -1,3 +1,13 @@
+.mat-progress-spinner {
+  margin: 0 auto;
+}
+
+.mat-card {
+  width: 15%;
+  text-align: center;
+  margin: 0 auto;
+}
+
 table {
   width: 70%;
 }

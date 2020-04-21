@@ -4,8 +4,6 @@ import { JokeDisplayComponent } from './joke-display.component';
 import { JokesService, Joke } from '../jokes.service';
 
 describe('JokeDisplayComponent', () => {
-  let component: JokeDisplayComponent;
-  let fixture: ComponentFixture<JokeDisplayComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
