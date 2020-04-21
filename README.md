@@ -2,29 +2,52 @@
 
 Download or `git clone` this repository to run locally.
 
-## Backend server
-Ensure Python 3.7 or a newer version is installed.
+## Backend Server
+The code for the backend server is in the `api` directory.
 
-Use a virtual environment to code using `python3 -m venv .env3`
-and `source .env3/bin/activate` to activate the environment
+    cd api
 
-On a new terminal/command line tab or window change to the `api` directory. Use `cd api`.
 
-Install all dependencies required to run the server by running `python3 -m pip install -r requirements.txt`.
+### Installation
+First, ensure Python 3.7+ is installed. Next, install the required dependencies using a virtual environment:
 
-Run `python3 app_api.py` to start the server. It will be available at `http://localhost:8000/`.
+    python3 -m venv .env
+    source .env/bin/activate
+    pip3 install -r requirements.txt
 
-Run `python3 test_app.py` to execute the unit tests.
+
+### Run the server:
+```
+python3 app_api.py
+```
+The server launched will be available at `http://localhost:8000/`.
+
+### Run tests
+```
+python3 test_app.py
+```
 
 ## Frontend
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.1.
+This project was built using [Angular CLI](https://github.com/angular/angular-cli) version 9.1.1. First, cd to the `public` directory on a new terminal tab or window.
 
-On a new terminal/command line tab or window change to the `public` directory. Use `cd public`.
+    cd public
 
-Run `npm install -g @angular/cli` to install Angular CLI
 
-Run `npm install` to install all dependencies required to run the app.
+### Installation
+Install Angular CLI. Next, install the require dependencies as follows:
 
-Run `ng serve --open --port 8080` for a dev server. This automatically navigates to `http://localhost:8080/`.
+    npm install -g @angular/cli
+    npm install
 
-Run `ng test` to execute the unit tests via [Karma]
+
+### Serve the results
+Use port 8080 for a dev server, which will automatically navigate to `http://localhost:8080/`.
+```
+ng serve --open --port 8080
+```
+
+### Run tests
+To execute unit tests via Karma, run the below command:
+```
+ng test
+```
