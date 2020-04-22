@@ -28,10 +28,12 @@ python3 test_app.py
 ```
 
 ## Frontend
+
 This project was built using [Angular CLI](https://github.com/angular/angular-cli) version 9.1.1. First, cd to the `public` directory on a new terminal tab or window.
 
     cd public
 
+First, ensure a minimum Node.js version of either v10.13 or v12.0 is installed.
 
 ### Installation
 Install Angular CLI. Next, install the require dependencies as follows:
